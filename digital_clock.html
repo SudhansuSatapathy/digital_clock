@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=">
+  <title>Clock</title>
+  <style>
+    body {
+	margin: 0;
+	padding: 0;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  }
+  h1 {
+	font-size: 150px;
+  margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  p {
+	font-size: 70px;
+  margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <p>Digital Clock</p>
+    <h1 id="showclock"></h1>
+    <p id="showdate"></p>
+    <button onclick="clearInterval(clock)" style="font-size: 40px; ">Stop</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="clock = setInterval(clocktiming, 1000)" style="font-size: 40px; ">Start</button>
+  </div> 
+    <script>
+      clocktiming();
+      var clock= setInterval(clocktiming, 1000)
+      function clocktiming(){
+      var d = new Date();
+      var time = d.toLocaleTimeString();
+      document.getElementById('showclock').innerHTML = time;
+      }
+      
+      date();
+      function date(){
+      var today = new Date(); 
+      var dd = today.getUTCDate(); 
+      var mm = today.getUTCMonth() + 1; 
+      var yyyy = today.getUTCFullYear(); 
+        if (dd < 10) { 
+            dd = '0' + dd; 
+        } 
+        if (mm < 10) { 
+            mm = '0' + mm; 
+        } 
+        //var today = dd + '/' + mm + '/' + yyyy;
+      document.getElementById('showdate').innerHTML=(dd + '/' + mm + '/' + yyyy);
+      
+    }
+    </script>
+</body>
+
+</html>
